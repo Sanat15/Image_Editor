@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Image Editor</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="layout" aria-label="Image editor">
+        <header class="topbar">
+            <button class="iconBtn" id="menuBtn" type="button" aria-label="Menu">
+                <span class="iconBtn__glyph" aria-hidden="true">☰</span>
+            </button>
+            <h1 class="topbar__title">Image Editor</h1>
+        </header>
+
+        <div class="content">
+            <aside class="sidebar" aria-label="Controls">
+                <button id="grayscaleBtn" class="btn btn--block btn--tint-red" type="button">Greyscale</button>
+
+                <div class="sliderCard" aria-label="Brightness">
+                    <div class="sliderCard__title sliderCard__title--blue">Brightness</div>
+                    <input type="range" id="brightnessSlider" min="-200" max="200" value="0" />
+                    <div class="sliderCard__value" id="brightnessValue">100%</div>
+                </div>
+
+                <div class="sliderCard" aria-label="Contrast">
+                    <div class="sliderCard__title sliderCard__title--green">Contrast</div>
+                    <input type="range" id="contrastSlider" min="-200" max="200" value="0" />
+                    <div class="sliderCard__value" id="contrastValue">100%</div>
+                </div>
+
+                <button id="cropBtn" class="btn btn--block btn--tint-yellow" type="button" disabled>Crop</button>
+                <button id="applyCropBtn" class="btn btn--block btn--tint-green" type="button" disabled>Apply Crop</button>
+
+                <button id="rotateLeftBtn" class="btn btn--block btn--tint-red" type="button" disabled>Rotate Left</button>
+                <button id="rotateRightBtn" class="btn btn--block btn--tint-red" type="button" disabled>Rotate</button>
+
+                <button id="flipHBtn" class="btn btn--block btn--tint-blue" type="button" disabled>Flip Horizontal</button>
+                <button id="flipVBtn" class="btn btn--block btn--tint-green" type="button" disabled>Flip Vertical</button>
+
+                <div class="resizeCard" aria-label="Resize">
+                    <button id="applyResizeBtn" class="btn btn--block btn--tint-yellow" type="button" disabled>Resize</button>
+                    <div class="resizeDropdown" id="resizeDropdown" hidden>
+                        <div class="sliderCard" aria-label="Resize width">
+                            <div class="sliderCard__title">Width</div>
+                            <input type="range" id="resizeWidth" min="1" max="1000" value="1" />
+                            <div class="sliderCard__value" id="resizeWidthValue">-</div>
+                        </div>
+                        <div class="sliderCard" aria-label="Resize height">
+                            <div class="sliderCard__title">Height</div>
+                            <input type="range" id="resizeHeight" min="1" max="1000" value="1" />
+                            <div class="sliderCard__value" id="resizeHeightValue">-</div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="workspace" aria-label="Canvas area">
+                <section class="canvasShell" aria-label="Canvas">
+                    <div class="canvasShell__top" aria-label="History">
+                        <button id="undoBtn" class="iconBtn" type="button" aria-label="Undo">
+                            <span class="iconBtn__glyph" aria-hidden="true">↶</span>
+                        </button>
+                        <button id="redoBtn" class="iconBtn" type="button" aria-label="Redo">
+                            <span class="iconBtn__glyph" aria-hidden="true">↷</span>
+                        </button>
+                    </div>
+
+                    <div class="canvasWrap" id="canvasWrap">
+                        <div class="emptyState" id="emptyState">
+                            <div class="emptyState__icon" aria-hidden="true">⇪</div>
+                            <div class="emptyState__title">Upload an image to start editing</div>
+                            <label class="btn btn--primary" for="imageInput">Upload Image</label>
+                        </div>
+                        <canvas id="editorCanvas"></canvas>
+                    </div>
+
+                    <div class="canvasShell__actions" aria-label="Export">
+                        <button id="exportBtn" class="btn btn--primary" type="button">Save</button>
+                    </div>
+
+                    <input type="file" id="imageInput" accept="image/*" class="srOnly" />
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+
+</body>
+</html>
